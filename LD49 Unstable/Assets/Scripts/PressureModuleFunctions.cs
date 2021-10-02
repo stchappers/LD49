@@ -7,6 +7,7 @@ public class PressureModuleFunctions : MonoBehaviour
     //Variables
     public GameObject UIHelper;
     public int enteredPressure;
+    public int[] pressures = new int[5] { 78, 53, 34, 87, 23 };
 
 
     //Functions

@@ -9,14 +9,21 @@ public class TaskManagerFunctions : MonoBehaviour
     public GameObject commander;
     public GameObject switchModule;
     public GameObject eqModule;
+    public GameObject pressureModule;
+    public GameObject lightPadModule;
 
     //puzzle vars
     int[] switchCombination = new int[5];
     int[] eqCombination = new int[7];
+    int[] lightPadCombination = new int[16];
+    int pressureValue;
+
 
     //Player vars
     int[] sPlayerCombination = new int[5];
     int[] ePlayerCombination = new int[7];
+    int pPlayerCombination;
+    int[] lPlayerCombination = new int[16];
 
     //Functions
     public void GenerateTask(string taskType)
@@ -48,6 +55,16 @@ public class TaskManagerFunctions : MonoBehaviour
         eqCombination = eqModule.GetComponent<EQModuleFunctions>().SetCombination(eqModule.GetComponent<EQModuleFunctions>().combinations[0]);
     }
 
+    void CreatePressureTask() 
+    {
+        pressureValue = pressureModule.GetComponent<PressureModuleFunctions>().SetPressure(pressureModule.GetComponent<PressureModuleFunctions>().pressures[0]);
+    }
+
+    void CreateLightPadTask() 
+    {
+        lightPadCombination = lightPadModule.GetComponent<LightPadModuleFunctions>().SetCombination(lightPadModule.GetComponent<LightPadModuleFunctions>().combinations[0]);
+    }
+
     //Task Completors
     //TODO: Connect completes to buttons in UI
     void CompleteSwitchTask() 
@@ -62,6 +79,16 @@ public class TaskManagerFunctions : MonoBehaviour
         if (ePlayerCombination == eqCombination) { commander.GetComponent<CommanderFunctions>().RegisterCommandComplete(); }
     }
 
+    void CompletePressureTask() 
+    {
+        pPlayerCombination = pressureModule.GetComponent<PressureModuleFunctions>().CommitPressure();
+        if (pPlayerCombination == pressureValue) { commander.GetComponent<CommanderFunctions>().RegisterCommandComplete(); }
+    }
 
+    void CompleteLightPadTask() 
+    {
+        lPlayerCombination = lightPadModule.GetComponent<LightPadModuleFunctions>().CommitCombination();
+        if (lPlayerCombination == lightPadCombination) { commander.GetComponent<CommanderFunctions>().RegisterCommandComplete(); }
+    }
 
 }
