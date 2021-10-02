@@ -19,7 +19,6 @@ public class SwitchModuleFunctions : MonoBehaviour
         combinations[3] = new int[5] { 1, 1, 0, 1, 0 };
         combinations[4] = new int[5] { 0, 1, 0, 1, 1 };
 
-        //for (int i = 0; i < combinations[1].Length; i++) { Debug.Log(combinations[1][i].ToString()); }
     }
 
     //Functions

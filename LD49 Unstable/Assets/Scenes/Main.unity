@@ -950,7 +950,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 467, y: -196.26}
+  m_AnchoredPosition: {x: 469, y: 229}
   m_SizeDelta: {x: -978.4109, y: -489.8969}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &230666566
@@ -2144,7 +2144,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -11, y: -200.4}
+  m_AnchoredPosition: {x: 315, y: -121}
   m_SizeDelta: {x: -742.5822, y: -481.61}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &593482530
@@ -4381,7 +4381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIHelper: {fileID: 2125810045}
-  enteredCombination: 0000000000000000000000000000000000000000
+  enteredSequence: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!4 &1068456788
 Transform:
   m_ObjectHideFlags: 0
@@ -6929,7 +6929,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -403, y: 99}
+  m_AnchoredPosition: {x: -325, y: 98}
   m_SizeDelta: {x: -830.0775, y: -463.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1717726089
@@ -7422,7 +7422,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -489.76465, y: -215.13}
+  m_AnchoredPosition: {x: -176, y: -207}
   m_SizeDelta: {x: -1003.6094, y: -452.16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1879910303
