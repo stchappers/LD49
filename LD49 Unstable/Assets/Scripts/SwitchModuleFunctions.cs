@@ -7,6 +7,7 @@ public class SwitchModuleFunctions : MonoBehaviour
 
     //Variables
     public int[][] combinations = new int[5][];
+    public int[] enteredCombination = new int[5];
 
     // Start is called before the first frame update
     void Start()
@@ -29,4 +30,14 @@ public class SwitchModuleFunctions : MonoBehaviour
         return chosenCombination;
     }
 
+    public void SetSwitchIO(int sweetch) 
+    {
+        if (enteredCombination[sweetch] != 1) { enteredCombination[sweetch] = 1; }
+        else { enteredCombination[sweetch] = 0; }
+    }
+
+    public int[] CommitCombination() 
+    {
+        return enteredCombination;
+    }
 }

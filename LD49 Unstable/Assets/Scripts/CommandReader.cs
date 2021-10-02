@@ -10,6 +10,7 @@ public class CommandReader : MonoBehaviour
     public class Command 
     {
         public string instruction;
+        public string taskType;
     }
 
     [System.Serializable]
@@ -25,9 +26,4 @@ public class CommandReader : MonoBehaviour
         gameCommandList = JsonUtility.FromJson<CommandList>(textJSON.text);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

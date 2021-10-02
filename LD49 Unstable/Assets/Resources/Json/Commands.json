@@ -1,9 +1,9 @@
 {
     "commands": [
 
-        {"instruction": "Do A"},
-        {"instruction": "Do B"},
-        {"instruction": "Do C"}
+        {"instruction": "Do A", "taskType": "switch"},
+        {"instruction": "Do B", "taskType": "switch"},
+        {"instruction": "Do C", "taskType": "switch"}
 
     ]
 }
