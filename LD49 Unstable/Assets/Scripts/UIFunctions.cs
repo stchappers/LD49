@@ -1,21 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIFunctions : MonoBehaviour
 {
     //Variables
-    public GameObject commander;
+    public Slider pressureSlider;
 
-    // Start is called before the first frame update
-    void Start()
+    //Functions
+    public void SetPressureSlider(int value) 
     {
-        
+        pressureSlider.value = value;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
