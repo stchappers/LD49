@@ -18,7 +18,6 @@ public class CommanderFunctions : MonoBehaviour
     {
         //delivers instruction to player
         Debug.Log(commander.GetComponent<CommandReader>().gameCommandList.commands[chosenCommand].instruction);
-        Debug.Log(commander.GetComponent<CommandReader>().gameCommandList.commands[chosenCommand].taskType);
 
         //sends request to create task
         taskManager.GetComponent<TaskManagerFunctions>().GenerateTask(commander.GetComponent<CommandReader>().gameCommandList.commands[chosenCommand].taskType);
@@ -26,6 +25,7 @@ public class CommanderFunctions : MonoBehaviour
 
     public void RegisterCommandComplete() 
     {
+        //TODO: Make sure task can't be completed more than once per wave
         Debug.Log("Task Complete!");
         logicManager.GetComponent<GameLogicManager>().CompleteCommand();
     }

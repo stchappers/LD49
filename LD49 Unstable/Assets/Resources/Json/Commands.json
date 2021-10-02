@@ -2,8 +2,9 @@
     "commands": [
 
         {"instruction": "Do A", "taskType": "switch"},
-        {"instruction": "Do B", "taskType": "switch"},
-        {"instruction": "Do C", "taskType": "switch"}
+        {"instruction": "Do B", "taskType": "EQ"},
+        {"instruction": "Do C", "taskType": "pressure"},
+        {"instruction": "Do D", "taskType": "lightpad"}
 
     ]
 }

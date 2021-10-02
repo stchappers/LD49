@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class TaskManagerFunctions : MonoBehaviour
@@ -36,6 +37,12 @@ public class TaskManagerFunctions : MonoBehaviour
             case "EQ":
                 CreateEQTask();
                 break;
+            case "pressure":
+                CreatePressureTask();
+                break;
+            case "lightpad":
+                CreateLightPadTask();
+                break;
             default:
                 Debug.Log("No Task Given");
                 break;
@@ -43,52 +50,58 @@ public class TaskManagerFunctions : MonoBehaviour
 
     }
 
+    int PuzzleVariationSelection() 
+    {
+        int selection = 0;
+        selection = Random.Range(0, 5);
+        return selection;
+
+    }
+
     //Task Creators
-    //TODO: Make these not just the first combo!!
     void CreateSwitchTask()
     {
-        switchCombination = switchModule.GetComponent<SwitchModuleFunctions>().SetCombination(switchModule.GetComponent<SwitchModuleFunctions>().combinations[0]);
+        switchCombination = switchModule.GetComponent<SwitchModuleFunctions>().SetCombination(switchModule.GetComponent<SwitchModuleFunctions>().combinations[PuzzleVariationSelection()]);
     }
 
     void CreateEQTask() 
     {
-        eqCombination = eqModule.GetComponent<EQModuleFunctions>().SetCombination(eqModule.GetComponent<EQModuleFunctions>().combinations[0]);
+        eqCombination = eqModule.GetComponent<EQModuleFunctions>().SetCombination(eqModule.GetComponent<EQModuleFunctions>().combinations[PuzzleVariationSelection()]);
     }
 
     void CreatePressureTask() 
     {
-        pressureValue = pressureModule.GetComponent<PressureModuleFunctions>().SetPressure(pressureModule.GetComponent<PressureModuleFunctions>().pressures[0]);
+        pressureValue = pressureModule.GetComponent<PressureModuleFunctions>().SetPressure(pressureModule.GetComponent<PressureModuleFunctions>().pressures[PuzzleVariationSelection()]);
     }
 
     void CreateLightPadTask() 
     {
-        lightPadCombination = lightPadModule.GetComponent<LightPadModuleFunctions>().SetCombination(lightPadModule.GetComponent<LightPadModuleFunctions>().combinations[0]);
+        lightPadCombination = lightPadModule.GetComponent<LightPadModuleFunctions>().SetCombination(lightPadModule.GetComponent<LightPadModuleFunctions>().combinations[PuzzleVariationSelection()]);
     }
 
     //Task Completors
-    //TODO: Connect completes to buttons in UI
-    void CompleteSwitchTask() 
+    public void CompleteSwitchTask() 
     {
         sPlayerCombination = switchModule.GetComponent<SwitchModuleFunctions>().CommitCombination();
-        if (sPlayerCombination == switchCombination) { commander.GetComponent<CommanderFunctions>().RegisterCommandComplete(); }
+        if (sPlayerCombination.SequenceEqual(switchCombination)) { commander.GetComponent<CommanderFunctions>().RegisterCommandComplete(); }
     }
 
-    void CompleteEQTask()
+    public void CompleteEQTask()
     {
         ePlayerCombination = eqModule.GetComponent<EQModuleFunctions>().CommitCombination();
-        if (ePlayerCombination == eqCombination) { commander.GetComponent<CommanderFunctions>().RegisterCommandComplete(); }
+        if (ePlayerCombination.SequenceEqual(eqCombination)) { commander.GetComponent<CommanderFunctions>().RegisterCommandComplete(); }
     }
 
-    void CompletePressureTask() 
+    public void CompletePressureTask() 
     {
         pPlayerCombination = pressureModule.GetComponent<PressureModuleFunctions>().CommitPressure();
         if (pPlayerCombination == pressureValue) { commander.GetComponent<CommanderFunctions>().RegisterCommandComplete(); }
     }
 
-    void CompleteLightPadTask() 
+    public void CompleteLightPadTask() 
     {
         lPlayerCombination = lightPadModule.GetComponent<LightPadModuleFunctions>().CommitCombination();
-        if (lPlayerCombination == lightPadCombination) { commander.GetComponent<CommanderFunctions>().RegisterCommandComplete(); }
+        if (lPlayerCombination.SequenceEqual(lightPadCombination)) { commander.GetComponent<CommanderFunctions>().RegisterCommandComplete(); }
     }
 
 }
