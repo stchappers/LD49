@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class UIFunctions : MonoBehaviour
 {
+    //Variables
+    public GameObject commander;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,10 +17,5 @@ public class UIFunctions : MonoBehaviour
     void Update()
     {
         
-    }
-
-    public void Pressed() 
-    {
-        Debug.Log("I've been pressed");
     }
 }
