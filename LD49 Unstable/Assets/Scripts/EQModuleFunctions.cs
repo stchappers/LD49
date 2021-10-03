@@ -43,7 +43,6 @@ public class EQModuleFunctions : MonoBehaviour
 
     public int[] CommitCombination()
     {
-        for (int i = 0; i < enteredCombination.Length; i++) { Debug.Log(enteredCombination[i].ToString()); }
         return enteredCombination;
     }
 

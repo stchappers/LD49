@@ -27,22 +27,14 @@ public class GameLogicManager : MonoBehaviour
 
     public void GenerateCommand() 
     {
-        if (commandIssued == false)
-        {
             //TODO: Make this not pick same task twice
             chosenCommand = Random.Range(0, commander.GetComponent<CommandReader>().gameCommandList.commands.Length);
-            commander.GetComponent<CommanderFunctions>().GiveCommand(chosenCommand);
-            commandIssued = true;
-        }
-        else { Debug.Log("command already issued!"); }
-
     }
 
 
 
-    public void CompleteCommand() 
+    public void CompleteWave() 
     {
-        //TODO: each time this is triggered, lower the tasks to do by one
-        commandIssued = false;
+        
     }
 }

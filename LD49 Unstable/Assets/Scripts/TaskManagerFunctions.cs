@@ -26,6 +26,13 @@ public class TaskManagerFunctions : MonoBehaviour
     int pPlayerCombination;
     int[] lPlayerCombination = new int[16];
 
+    //activate tasks
+    bool pressureTask = false;
+    bool lightPadTask = false;
+    bool eqTask = false;
+    bool switchTask = false;
+
+
     //Functions
     public void GenerateTask(string taskType)
     {
@@ -62,46 +69,86 @@ public class TaskManagerFunctions : MonoBehaviour
     void CreateSwitchTask()
     {
         switchCombination = switchModule.GetComponent<SwitchModuleFunctions>().SetCombination(switchModule.GetComponent<SwitchModuleFunctions>().combinations[PuzzleVariationSelection()]);
+        switchTask = true;    
     }
 
     void CreateEQTask() 
     {
         eqCombination = eqModule.GetComponent<EQModuleFunctions>().SetCombination(eqModule.GetComponent<EQModuleFunctions>().combinations[PuzzleVariationSelection()]);
+        eqTask = true;
     }
 
     void CreatePressureTask() 
     {
         pressureValue = pressureModule.GetComponent<PressureModuleFunctions>().SetPressure(pressureModule.GetComponent<PressureModuleFunctions>().pressures[PuzzleVariationSelection()]);
+        pressureTask = true;
     }
 
     void CreateLightPadTask() 
     {
         lightPadCombination = lightPadModule.GetComponent<LightPadModuleFunctions>().SetCombination(lightPadModule.GetComponent<LightPadModuleFunctions>().combinations[PuzzleVariationSelection()]);
+        lightPadTask = true;
     }
 
     //Task Completors
     public void CompleteSwitchTask() 
     {
-        sPlayerCombination = switchModule.GetComponent<SwitchModuleFunctions>().CommitCombination();
-        if (sPlayerCombination.SequenceEqual(switchCombination)) { commander.GetComponent<CommanderFunctions>().RegisterCommandComplete(); }
+        if (switchTask == true)
+        {
+            sPlayerCombination = switchModule.GetComponent<SwitchModuleFunctions>().CommitCombination();
+            if (sPlayerCombination.SequenceEqual(switchCombination)) 
+            { 
+                commander.GetComponent<CommanderFunctions>().RegisterCommandComplete();
+                switchTask = false;
+            }
+            
+        }
+        else { Debug.Log("You don't have this task..."); }
     }
 
     public void CompleteEQTask()
     {
-        ePlayerCombination = eqModule.GetComponent<EQModuleFunctions>().CommitCombination();
-        if (ePlayerCombination.SequenceEqual(eqCombination)) { commander.GetComponent<CommanderFunctions>().RegisterCommandComplete(); }
+        if (eqTask == true)
+        {
+            ePlayerCombination = eqModule.GetComponent<EQModuleFunctions>().CommitCombination();
+            if (ePlayerCombination.SequenceEqual(eqCombination)) 
+            {
+                commander.GetComponent<CommanderFunctions>().RegisterCommandComplete();
+                eqTask = false;
+            }
+
+        }
+        else { Debug.Log("You don't have this task..."); }
     }
 
     public void CompletePressureTask() 
     {
-        pPlayerCombination = pressureModule.GetComponent<PressureModuleFunctions>().CommitPressure();
-        if (pPlayerCombination == pressureValue) { commander.GetComponent<CommanderFunctions>().RegisterCommandComplete(); }
+        if(pressureTask == true)
+        {
+            pPlayerCombination = pressureModule.GetComponent<PressureModuleFunctions>().CommitPressure();
+            if (pPlayerCombination == pressureValue) 
+            {
+                commander.GetComponent<CommanderFunctions>().RegisterCommandComplete();
+                pressureTask = false;
+            }
+
+        }
+        else { Debug.Log("You don't have this task..."); }
     }
 
     public void CompleteLightPadTask() 
     {
-        lPlayerCombination = lightPadModule.GetComponent<LightPadModuleFunctions>().CommitCombination();
-        if (lPlayerCombination.SequenceEqual(lightPadCombination)) { commander.GetComponent<CommanderFunctions>().RegisterCommandComplete(); }
+        if (lightPadTask == true)
+        {
+            lPlayerCombination = lightPadModule.GetComponent<LightPadModuleFunctions>().CommitCombination();
+            if (lPlayerCombination.SequenceEqual(lightPadCombination)) 
+            {
+                commander.GetComponent<CommanderFunctions>().RegisterCommandComplete();
+                lightPadTask = false;
+            }
+
+        }
+        else { Debug.Log("You don't have this task..."); }
     }
 
 }

@@ -10,6 +10,8 @@ public class CommanderFunctions : MonoBehaviour
     public CommandReader commander;
     public GameObject taskManager;
 
+    int nOfTasks = 0;
+
     //TODO: Add current task lists
 
 
@@ -21,12 +23,14 @@ public class CommanderFunctions : MonoBehaviour
 
         //sends request to create task
         taskManager.GetComponent<TaskManagerFunctions>().GenerateTask(commander.GetComponent<CommandReader>().gameCommandList.commands[chosenCommand].taskType);
+        nOfTasks += 1;
     }
 
     public void RegisterCommandComplete() 
     {
-        //TODO: Make sure task can't be completed more than once per wave
         Debug.Log("Task Complete!");
-        logicManager.GetComponent<GameLogicManager>().CompleteCommand();
+        nOfTasks -= 1;
+
+        if (nOfTasks <= 0) { logicManager.GetComponent<GameLogicManager>().CompleteWave(); }
     }
 }
